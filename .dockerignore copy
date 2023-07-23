@@ -1,0 +1,23 @@
+**/node_modules/
+**/Dockerfile
+# .git
+# .gitignore
+# docker-compose*
+
+**/*.yml
+**/ignore-this/
+**/node_modules/
+**/ignore-this/
+*.yml
+**/dist
+.git
+npm-debug.log
+.coverage
+.coverage.*
+.env
+passphrase.txt
+logs/
+.git
+*.md
+.cache
+Dockerfile

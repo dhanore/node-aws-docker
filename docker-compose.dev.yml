@@ -1,0 +1,27 @@
+services:
+  node-app:
+    build: 
+      context: .
+      args:
+        NODE_ENV: development
+    volumes:
+      - ./:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+      - MONGO_USERNAME=root
+      - MONGO_PASSWORD=password
+      - SESSION_SECRET=sessionsecret
+    command: npm run dev
+
+  mongo:
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=password
+      - MONGO_INITDB_DATABASE=mytempdb
+    restart: always
+    ports:
+      - 27018:27017
+    volumes:
+      - mongo-db:/data/db
+      - ./docker-entrypoint-initdb.d/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
